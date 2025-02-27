@@ -959,7 +959,7 @@ function displayData1(data) {
     tableBody.innerHTML = ''; 
     let uniquetache = new Set();
     
-    const filteredData = data.slice(1).filter(row => row[1] === 'FINCA 9');  
+    const filteredData = data.slice(0).filter(row => row[1] === 'FINCA 9');  
 
     filteredData.forEach(row => {
         if (row.some(cell => cell && typeof cell === 'string' && cell.trim() !== "")) {
@@ -997,7 +997,7 @@ function downloadTableAsXLSX(data) {
     const headers = ['EQUIPE', 'FINCA', 'DATE', 'TAREA', 'EFFECTIF'];
 
    
-    const filteredData = data.slice(1).map(row => row.slice(0, 5)); 
+    const filteredData = data.slice(0).map(row => row.slice(0, 5)); 
     const dataWithHeaders = [headers, ...filteredData];
     const ws = XLSX.utils.aoa_to_sheet(dataWithHeaders);
     const wb = XLSX.utils.book_new();
@@ -1008,7 +1008,7 @@ function downloadTableAsXLSX(data) {
 function downloadTableAsXLSX1(data) {
 
     const headers = ['ID', 'NOME', 'EQUIPE', 'RHH', 'DATE', 'FINCA'];
-    const filteredData = data.slice(1).map(row => row.slice(0, 6));
+    const filteredData = data.slice(0).map(row => row.slice(0, 6));
     const dataWithHeaders = [headers, ...filteredData];
     const ws = XLSX.utils.aoa_to_sheet(dataWithHeaders);
     const wb = XLSX.utils.book_new();
